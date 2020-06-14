@@ -1,1 +1,199 @@
-
+local player = game.Players.LocalPlayer --game:GetService("TweenService"):Create(workspace.ImportantCoreParts.SafeGuardLights, TweenInfo.new(10,Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, 0, false, 0), {Transparency = 1}):Play()
+local gui = Instance.new("ScreenGui") --{0, 366},{0, 30}
+local Frame = Instance.new("Frame")
+local X = Instance.new("TextLabel")
+local ARMA = Instance.new("TextLabel")
+local S = Instance.new("TextLabel")
+local HolderFrame = Instance.new("Frame")
+local UIS = game:GetService("UserInputService")
+local TypeBox = Instance.new("TextBox")
+ver = "1.2"
+UIS.InputBegan:Connect(function(keyowner)
+    if keyowner.KeyCode == Enum.KeyCode.Quote then
+        TypeBox:CaptureFocus()
+    end
+end)
+gui.Name = "Sarmax"
+gui.Parent = player.PlayerGui
+gui.ResetOnSpawn = false
+Frame.BorderSizePixel = 0
+Frame.Parent = gui
+Frame.Position = UDim2.new(0.354, 0,0.312, 0)
+Frame.Size = UDim2.new(0, 366,0, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(95, 95, 95)
+Frame.Name = "Main"
+HolderFrame.BorderSizePixel = 0
+HolderFrame.BackgroundColor3 = Color3.fromRGB(113, 113, 113)
+HolderFrame.Parent = Frame
+HolderFrame.Size = UDim2.new(0, 366,0, 0)
+HolderFrame.Name = "HolderFrame"
+S.Text = "S"
+S.Name = "S"
+S.BackgroundTransparency = 1
+S.TextSize = 32
+S.Parent = Frame
+S.Position = UDim2.new(0.158, 0,0.381, 0)
+S.Size = UDim2.new(0, 45,0, 50)
+S.TextColor3 = Color3.fromRGB(0, 255, 127)
+S.TextTransparency = 1
+ARMA.Parent = Frame
+ARMA.Size = UDim2.new(0, 141,0, 50)
+ARMA.Position = UDim2.new(0.251, 0,0.381, 0)
+ARMA.Text = "ARMA"
+ARMA.Font = Enum.Font.GothamSemibold
+ARMA.TextColor3 = Color3.fromRGB(255,255,255)
+ARMA.TextSize = 50
+ARMA.TextWrapped = true
+ARMA.BackgroundTransparency = 1
+ARMA.TextTransparency = 1
+X.BackgroundTransparency = 1
+X.TextColor3 = Color3.fromRGB(255, 170, 0)
+X.Parent = Frame
+X.Position = UDim2.new(0.667, 0,0.381, 0)
+X.Text = "X"
+X.Size = UDim2.new(0, 45,0, 50)
+X.TextTransparency = 1
+X.TextSize = 50
+TypeBox.BackgroundTransparency = 1
+TypeBox.TextXAlignment = Enum.TextXAlignment.Left
+TypeBox.TextScaled = true
+TypeBox.TextWrapped = true
+TypeBox.Font = Enum.Font.GothamSemibold
+TypeBox.PlaceholderText = "Press ' to type here"
+TypeBox.TextColor3 = Color3.fromRGB(255,255,255)
+TypeBox.PlaceholderColor3 = Color3.new(255,255,255)
+TypeBox.Size = UDim2.new(0, 697,0, 37)
+TypeBox.Position = UDim2.new(0, 0,0.196, 0)
+function notify(text)
+	local AnnText = Instance.new("TextLabel")
+	AnnText.Parent = gui
+	AnnText.Name = "AnnText"
+	AnnText.BorderSizePixel = 5
+	AnnText.BorderColor3 = Color3.fromRGB(27, 42, 53)
+	AnnText.BackgroundColor3 = Color3.fromRGB(149, 149, 149)
+	AnnText.TextWrapped = true
+	AnnText.TextScaled = true
+	AnnText.TextColor3 = Color3.fromRGB(255,255,255)
+	AnnText.Font = Enum.Font.Code
+	AnnText.Size = UDim2.new(0, 180,0, 140)
+	AnnText.Position = UDim2.new(1, 0,0, 0)
+	AnnText.Text = text
+	game:GetService("TweenService"):Create(AnnText, TweenInfo.new(1,Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new(0, 0,0, 0)}):Play()
+	wait(5)
+	game:GetService("TweenService"):Create(AnnText, TweenInfo.new(1,Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new(1, 0,0, 0)}):Play()
+	wait(1)
+	AnnText:Destroy()
+end
+local function SirHurt()
+    if XPROTECT then
+        game.StarterGui:SetCore("SendNotification",{
+            Title = "SirHurtV4";
+            Text = "Exploit: SirHurtV4";
+            callback = exploitcheckbind;
+            Button1 = "Yes";
+        })
+    end
+end
+local function Protosmasher()
+    if PROTOSMASHER_LOADED then
+        game.StarterGui:SetCore("SendNotification",{
+            Title = "Protosmasher";
+            Text = "Exploit: Protosmasher";
+            callback = exploitcheckbind;
+            Button1 = "Yes";
+        })
+    end
+end
+local function Not_Compataible()
+    notify("Exploit is not compataible for some functions.")
+end
+function dragify(Fframe)
+ 
+    dragToggle = nil
+    local dragSpeed = 0.50
+    dragInput = nil
+    dragStart = nil
+    local dragPos = nil
+    function updateInput(input)
+        local Delta = input.Position - dragStart
+        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+        game:GetService("TweenService"):Create(Fframe, TweenInfo.new(0.30), {Position = Position}):Play()
+    end
+    Fframe.InputBegan:Connect(function(input)
+        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+            dragToggle = true
+            dragStart = input.Position
+            startPos = Fframe.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragToggle = false
+                end
+            end)
+        end
+    end)
+    Fframe.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    game:GetService("UserInputService").InputChanged:Connect(function(input)
+        if input == dragInput and dragToggle then
+            updateInput(input)
+        end
+    end)
+end
+local function checkexploit()
+    if XPROTECT then
+    SirHurt()
+    elseif printoutput ~= nil then
+        if PROTOSMASHER_LOADED and (not shared.repair) then
+            Protosmasher()
+        end
+    else
+        Not_Compataible()
+    end
+end
+local function NotifyCheck(wat)
+    if wat == "No" then
+        checkexploit()
+    elseif wat == "Yes." then
+        loadgui()
+    end
+end
+local exploitcheckbind = Instance.new("BindableFunction")
+exploitcheckbind.OnInvoke = NotifyCheck()
+function loadgui()
+	if pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/supergoblin08/Another-lua-script-lol/master/version'))() end) then
+		if ver ~= Ver then
+			notify('Outdated. Please take a new one.')
+		end
+	else
+    	game:GetService("TweenService"):Create(Frame, TweenInfo.new(2,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Size = UDim2.new(0, 366,0, 215)}):Play()
+    	game:GetService("TweenService"):Create(HolderFrame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Size = UDim2.new(0, 366,0, 30)}):Play()
+    	wait(2)
+    	game:GetService("TweenService"):Create(S, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
+    	game:GetService("TweenService"):Create(ARMA, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
+    	game:GetService("TweenService"):Create(X, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
+    	wait(3)
+    	game:GetService("TweenService"):Create(S, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
+    	game:GetService("TweenService"):Create(ARMA, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
+    	game:GetService("TweenService"):Create(X, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
+    	game:GetService("TweenService"):Create(Frame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new(0.195, 0,0.802, 0), Size = UDim2.new(0, 697,0, 46)}):Play()
+    	game:GetService("TweenService"):Create(HolderFrame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new({0, 0},{0, 0}), Size = UDim2.new(0, 697,0, 9)}):Play()
+    	wait(1)
+    	TypeBox.Parent = Frame
+    	S:Destroy()
+		ARMA:Destroy()
+		X:Destroy()
+	end
+end
+loadgui()
+TypeBox.FocusLost:Connect(function()
+	if TypeBox.Text == "dex" or TypeBox.Text == "explorer" then
+		loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer%20V2.txt",true))()
+	elseif TypeBox.Text == "Exit" or TypeBox.Text =="exit" then
+		gui:Destroy()
+	elseif TypeBox.Text == "EmotesGui" or "emotegui" then
+		loadstring(game:HttpGet("https://pastebin.com/raw/RmD3qNp7", true))()
+    end
+end)
