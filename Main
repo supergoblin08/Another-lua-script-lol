@@ -64,6 +64,7 @@ TypeBox.TextColor3 = Color3.fromRGB(255,255,255)
 TypeBox.PlaceholderColor3 = Color3.new(255,255,255)
 TypeBox.Size = UDim2.new(0, 697,0, 37)
 TypeBox.Position = UDim2.new(0, 0,0.196, 0)
+TypeBox.Text = ""
 function notify(text)
 	local AnnText = Instance.new("TextLabel")
 	AnnText.Parent = gui
@@ -193,6 +194,7 @@ end
 checkexploit()
 loadgui()
 TypeBox.FocusLost:Connect(function()
+	TypeBox.Text = " "
 	if TypeBox.Text == "dex" or TypeBox.Text == "explorer" then
 		loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer%20V2.txt",true))()
 	elseif TypeBox.Text == "Exit" or TypeBox.Text == "exit" then
@@ -200,6 +202,6 @@ TypeBox.FocusLost:Connect(function()
 	elseif TypeBox.Text == "EmotesGui" or TypeBox.Text == "emotegui" then
 		loadstring(game:HttpGet("https://pastebin.com/raw/RmD3qNp7", true))()
 	elseif TypeBox.Text == "Version" or TypeBox.Text == "ver" then
-		notify("Current version is"..ver..".")
+		notify("Current version is "..ver)
     end
 end)
