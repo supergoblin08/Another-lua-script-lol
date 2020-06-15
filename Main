@@ -7,7 +7,7 @@ local S = Instance.new("TextLabel")
 local HolderFrame = Instance.new("Frame")
 local UIS = game:GetService("UserInputService")
 local TypeBox = Instance.new("TextBox")
-ver = "1.3"
+ver = "1.4"
 UIS.InputBegan:Connect(function(keyowner)
     if keyowner.KeyCode == Enum.KeyCode.Quote then
         TypeBox:CaptureFocus()
@@ -194,7 +194,6 @@ end
 checkexploit()
 loadgui()
 TypeBox.FocusLost:Connect(function()
-	TypeBox.Text = " "
 	if TypeBox.Text == "dex" or TypeBox.Text == "explorer" then
 		loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer%20V2.txt",true))()
 	elseif TypeBox.Text == "Exit" or TypeBox.Text == "exit" then
