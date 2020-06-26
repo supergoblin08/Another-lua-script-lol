@@ -107,6 +107,7 @@ local function Protosmasher()
 end
 local function Not_Compataible()
     notify("Exploit is not compataible for some functions.")
+    loadgui()
 end
 function dragify(Fframe)
  
@@ -151,7 +152,7 @@ local function checkexploit()
             Protosmasher()
         end
     else
-        Not_Compataible()
+        f
     end
 end
 local function NotifyCheck(wat)
