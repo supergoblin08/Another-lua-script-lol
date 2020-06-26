@@ -7,7 +7,7 @@ local S = Instance.new("TextLabel")
 local HolderFrame = Instance.new("Frame")
 local UIS = game:GetService("UserInputService")
 local TypeBox = Instance.new("TextBox")
-ver = "1.4"
+ver = "1.5"
 UIS.InputBegan:Connect(function(keyowner)
     if keyowner.KeyCode == Enum.KeyCode.Quote then
         TypeBox:CaptureFocus()
