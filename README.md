@@ -3,5 +3,4 @@ Btw this is source code.
 
 Changelog:
 1.Added Version/ver command.
-2.Made automatic updates.
-3.Karen took the kids lol.
+2.Made automatic updates.(EXPLOITS THAT SUPPORT LOADSTRING)
