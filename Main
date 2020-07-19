@@ -9,9 +9,9 @@ local UIS = game:GetService("UserInputService")
 local TypeBox = Instance.new("TextBox")
 ver = "1.5"
 UIS.InputBegan:Connect(function(keyowner)
-    if keyowner.KeyCode == Enum.KeyCode.Quote then
-        TypeBox:CaptureFocus()
-    end
+	if keyowner.KeyCode == Enum.KeyCode.Quote then
+		TypeBox:CaptureFocus()
+	end
 end)
 gui.Name = "Sarmax"
 gui.Parent = player.PlayerGui
@@ -86,111 +86,102 @@ function notify(text)
 	AnnText:Destroy()
 end
 local function SirHurt()
-    if XPROTECT then
-        game.StarterGui:SetCore("SendNotification",{
-            Title = "SirHurtV4";
-            Text = "Exploit: SirHurtV4";
-            callback = exploitcheckbind;
-            Button1 = "Yes";
-        })
-    end
+	if XPROTECT then
+		game.StarterGui:SetCore("SendNotification",{
+			Title = "SirHurtV4";
+			Text = "Exploit: SirHurtV4";
+			callback = exploitcheckbind;
+			Button1 = "Yes";
+		})
+	end
 end
 local function Protosmasher()
-    if PROTOSMASHER_LOADED then
-        game.StarterGui:SetCore("SendNotification",{
-            Title = "Protosmasher";
-            Text = "Exploit: Protosmasher";
-            callback = exploitcheckbind;
-            Button1 = "Yes";
-        })
-    end
+	if PROTOSMASHER_LOADED then
+		game.StarterGui:SetCore("SendNotification",{
+			Title = "Protosmasher";
+			Text = "Exploit: Protosmasher";
+			callback = exploitcheckbind;
+			Button1 = "Yes";
+		})
+	end
 end
 local function Not_Compataible()
-    notify("Exploit is not compataible for some functions.")
-    loadgui()
+	notify("Exploit is not compataible for some functions.")
+	loadgui()
 end
 function dragify(Fframe)
  
-    dragToggle = nil
-    local dragSpeed = 0.50
-    dragInput = nil
-    dragStart = nil
-    local dragPos = nil
-    function updateInput(input)
-        local Delta = input.Position - dragStart
-        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-        game:GetService("TweenService"):Create(Fframe, TweenInfo.new(0.30), {Position = Position}):Play()
-    end
-    Fframe.InputBegan:Connect(function(input)
-        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
-            dragToggle = true
-            dragStart = input.Position
-            startPos = Fframe.Position
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    dragToggle = false
-                end
-            end)
-        end
-    end)
-    Fframe.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
-    game:GetService("UserInputService").InputChanged:Connect(function(input)
-        if input == dragInput and dragToggle then
-            updateInput(input)
-        end
-    end)
+	dragToggle = nil
+	local dragSpeed = 0.50
+	dragInput = nil
+	dragStart = nil
+	local dragPos = nil
+	function updateInput(input)
+		local Delta = input.Position - dragStart
+		local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+		game:GetService("TweenService"):Create(Fframe, TweenInfo.new(0.30), {Position = Position}):Play()
+	end
+	Fframe.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+			dragToggle = true
+			dragStart = input.Position
+			startPos = Fframe.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	Fframe.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	game:GetService("UserInputService").InputChanged:Connect(function(input)
+		if input == dragInput and dragToggle then
+			updateInput(input)
+		end
+	end)
 end
 local function checkexploit()
-    if XPROTECT then
-    SirHurt()
-    elseif printoutput ~= nil then
-        if PROTOSMASHER_LOADED and (not shared.repair) then
-            Protosmasher()
-        end
-    else
-        f
-    end
+	if XPROTECT then
+	SirHurt()
+	elseif printoutput ~= nil then
+		if PROTOSMASHER_LOADED and (not shared.repair) then
+			Protosmasher()
+		end
+	else
+		notify("Ur hack is so bad that it cant run some functions")
+	end
 end
 local function NotifyCheck(wat)
-    if wat == "No" then
-        checkexploit()
-    elseif wat == "Yes." then
-        loadgui()
-    end
+	if wat == "No" then
+		checkexploit()
+	elseif wat == "Yes." then
+		loadgui()
+	end
 end
 local exploitcheckbind = Instance.new("BindableFunction")
 exploitcheckbind.OnInvoke = NotifyCheck()
 function loadgui()
-	if pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/supergoblin08/Another-lua-script-lol/master/version'))() end) then
-		if ver ~= Ver then
-			notify("Hold on for a second.")
-			wait(5)
-			gui:Destroy()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/supergoblin08/Another-lua-script-lol/master/Main", true))()
-		elseif ver == Ver then
-    		game:GetService("TweenService"):Create(Frame, TweenInfo.new(2,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Size = UDim2.new(0, 366,0, 215)}):Play()
-    		game:GetService("TweenService"):Create(HolderFrame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Size = UDim2.new(0, 366,0, 30)}):Play()
-    		wait(2)
-    		game:GetService("TweenService"):Create(S, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
-    		game:GetService("TweenService"):Create(ARMA, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
-    		game:GetService("TweenService"):Create(X, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
-    		wait(3)
-    		game:GetService("TweenService"):Create(S, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
-    		game:GetService("TweenService"):Create(ARMA, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
-    		game:GetService("TweenService"):Create(X, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
-    		game:GetService("TweenService"):Create(Frame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new(0.195, 0,0.802, 0), Size = UDim2.new(0, 697,0, 46)}):Play()
-    		game:GetService("TweenService"):Create(HolderFrame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new({0, 0},{0, 0}), Size = UDim2.new(0, 697,0, 9)}):Play()
-    		wait(1)
-    		TypeBox.Parent = Frame
-    		S:Destroy()
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(2,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Size = UDim2.new(0, 366,0, 215)}):Play()
+			game:GetService("TweenService"):Create(HolderFrame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Size = UDim2.new(0, 366,0, 30)}):Play()
+			wait(2)
+			game:GetService("TweenService"):Create(S, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
+			game:GetService("TweenService"):Create(ARMA, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
+			game:GetService("TweenService"):Create(X, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 0}):Play()
+			wait(3)
+			game:GetService("TweenService"):Create(S, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
+			game:GetService("TweenService"):Create(ARMA, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
+			game:GetService("TweenService"):Create(X, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {TextTransparency = 1}):Play()
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new(0.195, 0,0.802, 0), Size = UDim2.new(0, 697,0, 46)}):Play()
+			game:GetService("TweenService"):Create(HolderFrame, TweenInfo.new(1,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {Position = UDim2.new({0, 0},{0, 0}), Size = UDim2.new(0, 697,0, 9)}):Play()
+			wait(1)
+			TypeBox.Parent = Frame
+			S:Destroy()
 			ARMA:Destroy()
 			X:Destroy()
-		end
-	end
 end
 checkexploit()
 loadgui()
@@ -203,5 +194,5 @@ TypeBox.FocusLost:Connect(function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/RmD3qNp7", true))()
 	elseif TypeBox.Text == "Version" or TypeBox.Text == "ver" then
 		notify("Current version is "..ver)
-    end
+	end
 end)
