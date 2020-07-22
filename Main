@@ -85,30 +85,6 @@ function notify(text)
 	wait(1)
 	AnnText:Destroy()
 end
-local function SirHurt()
-	if XPROTECT then
-		game.StarterGui:SetCore("SendNotification",{
-			Title = "SirHurtV4";
-			Text = "Exploit: SirHurtV4";
-			callback = exploitcheckbind;
-			Button1 = "Yes";
-		})
-	end
-end
-local function Protosmasher()
-	if PROTOSMASHER_LOADED then
-		game.StarterGui:SetCore("SendNotification",{
-			Title = "Protosmasher";
-			Text = "Exploit: Protosmasher";
-			callback = exploitcheckbind;
-			Button1 = "Yes";
-		})
-	end
-end
-local function Not_Compataible()
-	notify("Exploit is not compataible for some functions.")
-	loadgui()
-end
 function dragify(Fframe)
  
 	dragToggle = nil
@@ -146,20 +122,13 @@ function dragify(Fframe)
 end
 local function checkexploit()
 	if XPROTECT then
-	SirHurt()
+		notify("*sirhurt cat face here*")
 	elseif printoutput ~= nil then
 		if PROTOSMASHER_LOADED and (not shared.repair) then
-			Protosmasher()
+			notify("Protosmasher boi")
 		end
-	else
+	elseif 
 		notify("Ur hack is so bad that it cant run some functions")
-	end
-end
-local function NotifyCheck(wat)
-	if wat == "No" then
-		checkexploit()
-	elseif wat == "Yes." then
-		loadgui()
 	end
 end
 local exploitcheckbind = Instance.new("BindableFunction")
